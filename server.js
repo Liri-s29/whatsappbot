@@ -15,7 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-var token = process.env.TOKEN || "token";
 var received_updates = [];
 
 const FacebookRouter = require("./modules/facebook/route");

@@ -16,7 +16,7 @@ module.exports = async function addUser(req) {
 			wa_id: contactData.wa_id,
 			wa_name: contactData.profile.name,
 		};
-		const newUser = new UserModel(user);
+		const newUser = new UserModel(userData);
 		await newUser.save();
 		// return user data
 		return { new: true, ...userData };

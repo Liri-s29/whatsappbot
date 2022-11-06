@@ -5,7 +5,7 @@ module.exports = async function addMessage(req) {
 	try {
 		const contactData = await addUser(req);
 		const messageData = req.body.entry[0].changes[0].value.messages[0];
-        
+
 		if (contactData.new == true) {
 			const chatData = {
 				wa_id: contactData.wa_id,
@@ -14,7 +14,7 @@ module.exports = async function addMessage(req) {
 					{
 						from_me: false,
 						timeStamp: messageData.timestamp,
-						media: type == "text" ? false : true,
+						media: messageData.type == "text" ? false : true,
 						message: messageData.body,
 					},
 				],
@@ -28,7 +28,7 @@ module.exports = async function addMessage(req) {
 				from_me: false,
 				timeStamp: messageData.timestamp,
 				media: type == "text" ? false : true,
-				message: messageData.body,
+				message: messageData.text.body,
 			});
 			await chat.save();
 			return { new: false, ...chat };

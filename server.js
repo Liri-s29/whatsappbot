@@ -20,8 +20,8 @@ var received_updates = [];
 const FacebookRouter = require("./modules/facebook/route");
 const getAllMessages = require("./modules/chat/service/get-all-messages");
 
-const chatModel = app.get("/", async function (req, res) {
-	console.log(req);
+app.get("/", async function (req, res) {
+	// console.log(req);
 	const allMessages = await getAllMessages();
 	res.send("<pre>" + JSON.stringify(allMessages, null, 2) + "</pre>");
 });

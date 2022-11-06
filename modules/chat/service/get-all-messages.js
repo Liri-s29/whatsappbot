@@ -8,7 +8,7 @@ module.exports = async function getAllMessages() {
 		chats.forEach((chat) => {
 			chat.messages.forEach((message) => {
 				messages.push({
-					text: message.text,
+					text: message.message,
 				});
 			});
 		});

@@ -9,18 +9,18 @@ module.exports = async function addUser(req) {
 	try {
 		// Check if user exists
 		const user = await UserModel.findOne({ wa_id: contactData.wa_id });
-		if (!user) {
-			const userData = {
-				wa_id: contactData.wa_id,
-				wa_name: contactData.profile.name,
-			};
-			const newUser = new UserModel(user);
-			await newUser.save();
-			// return user data
-			return { new: true, ...userData };
+		if (user) {
+			return { new: false, ...user };
 		}
+		const userData = {
+			wa_id: contactData.wa_id,
+			wa_name: contactData.profile.name,
+		};
+		const newUser = new UserModel(user);
+		await newUser.save();
 		// return user data
-		return { new: false, ...user };
+		return { new: true, ...userData };
+		// return user data
 	} catch (error) {
 		console.log(error);
 	}

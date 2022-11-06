@@ -15,7 +15,7 @@ module.exports = async function addMessage(req) {
 						from_me: false,
 						timeStamp: messageData.timestamp,
 						media: messageData.type == "text" ? false : true,
-						message: messageData.body,
+						message: messageData.text.body,
 					},
 				],
 			};

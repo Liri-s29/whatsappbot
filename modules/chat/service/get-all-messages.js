@@ -8,9 +8,7 @@ module.exports = async function getAllMessages() {
 		chats.forEach((chat) => {
 			chat.messages.forEach((message) => {
 				messages.push({
-					...message._doc,
-					wa_id: chat.wa_id,
-					wa_name: chat.wa_name,
+					text: message.text,
 				});
 			});
 		});

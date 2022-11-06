@@ -17,7 +17,7 @@ const facebookReceiveMessageController = (req, res) => {
 
 	console.log("request header X-Hub-Signature validated");
 	// Process the Facebook updates here
-	console.log(req.body);
+	console.log(JSON.stringify(req.body));
 	res.sendStatus(200);
 };
 

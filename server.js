@@ -18,10 +18,12 @@ app.use(cors());
 var received_updates = [];
 
 const FacebookRouter = require("./modules/facebook/route");
+const getAllMessages = require("./modules/chat/service/get-all-messages");
 
-app.get("/", function (req, res) {
+const chatModel = app.get("/", async function (req, res) {
 	console.log(req);
-	res.send("<pre>" + JSON.stringify(received_updates, null, 2) + "</pre>");
+	const allMessages = await getAllMessages();
+	res.send("<pre>" + JSON.stringify(allMessages, null, 2) + "</pre>");
 });
 
 app.use("/facebook", FacebookRouter);

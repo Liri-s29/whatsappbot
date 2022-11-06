@@ -5,7 +5,7 @@ module.exports = async function addMessage(req) {
 	try {
 		const contactData = await addUser(req);
 		const messageData = req.body.entry[0].changes[0].value.messages[0];
-
+        
 		if (contactData.new == true) {
 			const chatData = {
 				wa_id: contactData.wa_id,

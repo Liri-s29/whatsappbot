@@ -24,6 +24,7 @@ module.exports = async function addMessage(req) {
 			return { new: true, ...chatData };
 		} else {
 			const chat = await chatModel.findOne({ wa_id: contactData.wa_id });
+			console.log(chat);
 			chat.messages.push({
 				from_me: false,
 				timeStamp: messageData.timestamp,
